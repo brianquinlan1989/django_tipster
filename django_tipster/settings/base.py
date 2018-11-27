@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'home',
-    'django_forms_bootstrap'
+    'django_forms_bootstrap',
+    'django_tables2'
     
 ]
 

@@ -1,6 +1,7 @@
 body {
     font-family: Arial;
     padding-top: 100px;
+     
 }
 
 footer {
@@ -17,4 +18,8 @@ footer {
 
 .accountform {
     padding-top: 20px;
+}
+
+.btn {
+    margin-top: 20px;
 }

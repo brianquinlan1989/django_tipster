@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import datetime
-from .models import Race, Runner
+from .models import Race, Runner, Selection
 
 # Create your views here.
 
@@ -14,7 +14,7 @@ def time_in_range(start, end, x):
 
 def show_home(request):
     start = datetime.time(17, 0, 0)
-    end = datetime.time(16, 29, 0)
+    end = datetime.time(23, 18, 0)
     race_start_time = time_in_range(start, end, datetime.datetime.now().time())
 
 
@@ -29,18 +29,35 @@ def show_home(request):
 
 
 def add_selection(request, day):
-    if request.method == "POST":
-        form = RaceSelection(request.POST)
-        selection = form.save(commit=False)
-        selection.user = request.user
-        saved_selection = post.save()
-        
-        return render(request, "home/selection_confirmed.html", {'saved_selection':saved_selection})
-    
-    else:
         races = Race.objects.filter(day = day)
-        
         return render(request, "home/add_selection.html", {'races':races, 'day':day})
+        
+def add_selection_confirmed(request):
+    for key,value in request.POST.items():
+
+        if key != 'csrfmiddlewaretoken' and key != 'day':
+            r = Runner.objects.filter(name = value)[0]
+            selection = Selection(runner = r,  user = request.user)
+            selection.save()
+    return render(request, "home/add_selection_confirmed.html", {'selection':selection})
+
+def show_leaderboard(request):
+    return render(request, "home/leaderboard.html")
+
+
+
+
+
+
+
+#         request.method == "POST"
+#         form = RaceSelection(request.POST)
+#         selection = form.save(commit=False)
+#         selection.user = request.user
+#         saved_selection = post.save()
+        
+#         return render(request, "home/selection_confirmed.html", {'saved_selection':saved_selection})
+    
     
 # def edit_selection(request):
 #     edit_selection = RaceSelection()
