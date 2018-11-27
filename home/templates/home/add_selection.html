@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% load bootstrap_tags %}
+{% block content %}
+
+
+
+<form method="POST" action="#">
+    <div class="container">
+        <div class ="row">
+            <div class="form-group col-sm-12 col-md-12 col-lg-12">
+               
+                <h1>Day {{day}} - Race selections</h1>
+                <hr>
+               
+               
+                
+                {% for race in races %}
+                <p> 
+                    <label for="id_race_{{race.id}}">{{race.time}} - {{race.name}}:</label>
+                    <select id="id_race_{{race.id}}" type="text" name"race_{{race.id}}"/>
+                        <option value="">--Please choose a horse--</option>
+                    {% for runner in race.runners.all %}
+                        <option value="runners">{{runner.name}}</option>
+                    {% endfor %}
+                    </select>
+                </p>
+                {% endfor %}
+                <input type="hidden" name="day" value={{1}}/>
+                <input class="btn btn-primary" type="submit" value="Submit Selections"/>
+            
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

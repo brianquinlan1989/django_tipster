@@ -15,14 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from home.views import show_home, show_day1_add_selection
+from home.views import show_home, add_selection
 
 from accounts.views import signup, show_profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', show_home, name="home"),
-    path('day1/add_selection/', show_day1_add_selection, name="day1_add_selection"),
+    path('add_selection/day/<int:day>', add_selection, name="add_selection"),
+    # path('edit_selection/day/<int:id>', edit_selection, name="edit_selection"),
+    # path('selection_confirmed/day/<int:id>', add_selection),
     
     path('accounts/profile', show_profile, name='profile'),
     path('accounts/', include('django.contrib.auth.urls')),

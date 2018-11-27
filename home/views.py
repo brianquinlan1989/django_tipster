@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .forms import DayOneSelection
 import datetime
+from .models import Race, Runner
 
 # Create your views here.
 
@@ -19,16 +19,29 @@ def show_home(request):
 
 
     user_selection_is_picked_day1 = False
-    user_selection_is_picked_day2 = True
-    user_selection_is_picked_day3 = True
-    user_selection_is_picked_day4 = True
+    user_selection_is_picked_day2 = False
+    user_selection_is_picked_day3 = False
+    user_selection_is_picked_day4 = False
     
     context = {"race_start_time":race_start_time, 'user_selection_is_picked_day1':user_selection_is_picked_day1, 'user_selection_is_picked_day2':user_selection_is_picked_day2, 'user_selection_is_picked_day3':user_selection_is_picked_day3, 'user_selection_is_picked_day4':user_selection_is_picked_day4 }
     
     return render(request, "home/index.html", context )
 
 
-def show_day1_add_selection(request):
+def add_selection(request, day):
+    if request.method == "POST":
+        form = RaceSelection(request.POST)
+        selection = form.save(commit=False)
+        selection.user = request.user
+        saved_selection = post.save()
+        
+        return render(request, "home/selection_confirmed.html", {'saved_selection':saved_selection})
     
-    add_selection = DayOneSelection
-    return render(request, "home/day1_add_selection.html", {'add_selection':add_selection})
+    else:
+        races = Race.objects.filter(day = day)
+        
+        return render(request, "home/add_selection.html", {'races':races, 'day':day})
+    
+# def edit_selection(request):
+#     edit_selection = RaceSelection()
+#     return render(request, "home/edit_selection.html", {'edit_selection':edit_selection})
