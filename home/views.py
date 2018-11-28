@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import datetime
 from .models import Race, Runner, Selection
+from accounts.models import Profile
 
 # Create your views here.
 
@@ -14,11 +15,11 @@ def time_in_range(start, end, x):
 
 def show_home(request):
     start = datetime.time(17, 0, 0)
-    end = datetime.time(23, 18, 0)
+    end = datetime.time(13, 18, 0)
     race_start_time = time_in_range(start, end, datetime.datetime.now().time())
 
 
-    user_selection_is_picked_day1 = False
+    user_selection_is_picked_day1 = True
     user_selection_is_picked_day2 = False
     user_selection_is_picked_day3 = False
     user_selection_is_picked_day4 = False
@@ -42,7 +43,10 @@ def add_selection_confirmed(request):
     return render(request, "home/add_selection_confirmed.html", {'selection':selection})
 
 def show_leaderboard(request):
-    return render(request, "home/leaderboard.html")
+    profiles = Profile.objects.all()
+    selections = Selection.objects.all()
+    
+    return render(request, "home/leaderboard.html", {'profiles':profiles, 'selections':selections})
 
 
 
