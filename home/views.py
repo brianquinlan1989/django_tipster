@@ -19,7 +19,7 @@ def show_home(request):
     race_start_time = time_in_range(start, end, datetime.datetime.now().time())
 
 
-    user_selection_is_picked_day1 = True
+    user_selection_is_picked_day1 = False
     user_selection_is_picked_day2 = False
     user_selection_is_picked_day3 = False
     user_selection_is_picked_day4 = False

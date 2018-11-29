@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'accounts',
     'home',
     'django_forms_bootstrap',
-    'django_tables2'
+    'django_tables2', 
+    'storages'
     
 ]
 
