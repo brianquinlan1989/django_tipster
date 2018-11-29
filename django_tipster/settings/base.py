@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'django_tipster.urls'
@@ -129,4 +130,6 @@ LOGOUT_REDIRECT_URL='/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SYSTEM_EMAIL = 'admin@mysitename.com'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
