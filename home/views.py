@@ -44,9 +44,15 @@ def add_selection_confirmed(request):
 
 def show_leaderboard(request):
     profiles = Profile.objects.all()
-    selections = Selection.objects.all()
     
-    return render(request, "home/leaderboard.html", {'profiles':profiles, 'selections':selections})
+    
+    return render(request, "home/leaderboard.html", {'profiles':profiles})
+    
+def show_your_selection(request):
+    profiles = Profile.objects.all()
+    return render(request, "home/user_selection.html", {'profiles':profiles})
+    
+
 
 
 
