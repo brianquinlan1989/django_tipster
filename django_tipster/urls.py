@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from home.views import show_home, add_selection, add_selection_confirmed, show_leaderboard, show_your_selection
+from home.views import show_home, add_selection, add_selection_confirmed, show_leaderboard, show_your_selection_leaderboard, show_rules
 
 from accounts.views import signup, show_profile
 
@@ -23,10 +23,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', show_home, name="home"),
     path('add_selection/day/<int:day>', add_selection, name="add_selection"),
-    # path('edit_selection/day/<int:id>', edit_selection, name="edit_selection"),
-    path('selection_confirmed/', add_selection_confirmed, name="add_selection_confirmed"),
+    
+    
+    path('selection_confirmed/<int:day>', add_selection_confirmed, name="add_selection_confirmed"),
+    
+    
+    
     path('leaderboard/', show_leaderboard, name="leaderboard"),
-    path('your_selection/day', show_your_selection, name="show_your_selection"),
+    path('your_selection/day/<int:day>/user/<int:id>', show_your_selection_leaderboard, name="show_your_selection_leaderboard"),
+    path('how to play', show_rules, name='show_rules'),
     
     path('accounts/profile', show_profile, name='profile'),
     path('accounts/', include('django.contrib.auth.urls')),

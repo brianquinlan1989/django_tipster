@@ -36,7 +36,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 sm-col-12 col-md-12 col-lg-12">
-                <a href="#">How to play</a>
+                <a href="{% url 'show_rules' %}">How to play</a>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
                     {% if user_selection_is_picked_day1 is True %}
                         <a href="#" class="btn btn-primary">Edit Day 1 Selections</a>
                     {% else%}
-                        <a href="{% url 'add_selection' day=1 %}" class="btn btn-primary">Add Day 1 Selections</a>
+                        <a href="{% url 'add_selection' 1 %}" class="btn btn-primary">Day 1 Selections</a>
                     {% endif%}
                 {% else %}
                     <p>1.30pm was the deadline for selections</p>
@@ -67,7 +67,7 @@
                     {% if user_selection_is_picked_day2 is True %}
                         <a href="#" class="btn btn-primary">Edit Day 2 Selections</a>
                     {% else%}
-                        <a href="{% url 'add_selection' day=2 %}" class="btn btn-primary">Add Day 2 Selections</a>
+                        <a href="{% url 'add_selection' 2 %}" class="btn btn-primary">Day 2 Selections</a>
                     {% endif%}
                 {% else %}
                     <p>1.30pm was the deadline for selections</p>
@@ -81,7 +81,7 @@
                     {% if user_selection_is_picked_day3 is True %}
                         <a href="#" class="btn btn-primary">Edit Day 3 Selections</a>
                     {% else%}
-                        <a href="{% url 'add_selection' day=3 %}" class="btn btn-primary">Add Day 3 Selections</a>
+                        <a href="{% url 'add_selection' 3 %}" class="btn btn-primary">Day 3 Selections</a>
                     {% endif%}
                 {% else %}
                     <p>1.30pm was the deadline for selections</p>
@@ -94,25 +94,22 @@
                     {% if user_selection_is_picked_day4 is True %}
                         <a href="#" class="btn btn-primary">Edit Day 4 Selections</a>
                     {% else%}
-                        <a href="{% url 'add_selection' day=4 %}" class="btn btn-primary">Add Day 4 Selections</a>
+                        <a href="{% url 'add_selection' 4 %}" class="btn btn-primary">Day 4 Selections</a>
                     {% endif%}
                 {% else %}
                     <p>1.30pm was the deadline for selections</p>
                 {% endif %}
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-                        <a href="{% url 'leaderboard' %}" class="btn btn-primary" value="view_leaderboard">View Leaderboard</a>
-                    </div>
-                    
-                </div>
-                <p>
-                    
-                </p>
+            
+            
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                <a href="{% url 'leaderboard' %}" class="btn btn-primary" value="view_leaderboard">View Leaderboard</a>
             </div>
         </div>
     </div>
+
     
     {% else %}
     <div class="container">

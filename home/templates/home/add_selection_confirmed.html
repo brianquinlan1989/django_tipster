@@ -4,16 +4,44 @@
 
 
 
-    <div class="container">
-        <div class ="row">
-            <div class="form-group col-sm-12 col-md-12 col-lg-12">
-                <h1>Day 1 - Race Selections Confirmed</h1>
-                <hr>
-                
+<div class="container">
+    <div class ="row">
+        <div class="form-group col-sm-12 col-md-12 col-lg-12">
+            <h1>Day - Race Selections Confirmed</h1>
             
-            </div>
+                  
+                 <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Race Time</th>
+                      <th scope="col">Race Name</th>
+                      <th scope="col">Horse Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>  
+             
+                    {% for selection in user.selections.all %} 
+                    <tr>
+                      <td>{{selection.runner.race.time}}</td>
+                      <td>{{selection.runner.race}}</td>
+                      <td>{{selection.runner.name}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>
         </div>
     </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+            <a href="{% url 'edit_selection' %}" class="btn btn-primary" value="view_leaderboard">Edit Selections</a>
+        </div>
+    </div>
+</div>
+
+    
 
 
 {% endblock %}

@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, HttpResponse
 import datetime
 from .models import Race, Runner, Selection
 from accounts.models import Profile
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 
@@ -15,7 +17,7 @@ def time_in_range(start, end, x):
 
 def show_home(request):
     start = datetime.time(17, 0, 0)
-    end = datetime.time(13, 18, 0)
+    end = datetime.time(13, 46, 0)
     race_start_time = time_in_range(start, end, datetime.datetime.now().time())
 
 
@@ -33,42 +35,33 @@ def add_selection(request, day):
         races = Race.objects.filter(day = day)
         return render(request, "home/add_selection.html", {'races':races, 'day':day})
         
-def add_selection_confirmed(request):
+def add_selection_confirmed(request, day):
+    
+    selections = Selection.objects.filter(user=request.user)
+    for selection in selections:
+        if selection.runner.race.day == day:
+            selection.delete()
+    
     for key,value in request.POST.items():
-
         if key != 'csrfmiddlewaretoken' and key != 'day':
             r = Runner.objects.filter(name = value)[0]
             selection = Selection(runner = r,  user = request.user)
             selection.save()
-    return render(request, "home/add_selection_confirmed.html", {'selection':selection})
+     
+    return render(request, "home/add_selection_confirmed.html")
+    
 
 def show_leaderboard(request):
     profiles = Profile.objects.all()
-    
-    
+
     return render(request, "home/leaderboard.html", {'profiles':profiles})
     
-def show_your_selection(request):
-    profiles = Profile.objects.all()
-    return render(request, "home/user_selection.html", {'profiles':profiles})
-    
+def show_your_selection_leaderboard(request, day, id):
+    profiles = Profile.objects.filter(user=request.user)
+    user = get_object_or_404(User, id=id)
+    selections = Selection.objects.filter(user=user).filter(runner__race__day = day)
+    return render(request, "home/user_selection.html", {'profiles':profiles, 'selections':selections, 'user':user, 'range':range(1,5)})
 
 
-
-
-
-
-
-
-#         request.method == "POST"
-#         form = RaceSelection(request.POST)
-#         selection = form.save(commit=False)
-#         selection.user = request.user
-#         saved_selection = post.save()
-        
-#         return render(request, "home/selection_confirmed.html", {'saved_selection':saved_selection})
-    
-    
-# def edit_selection(request):
-#     edit_selection = RaceSelection()
-#     return render(request, "home/edit_selection.html", {'edit_selection':edit_selection})
+def show_rules(request):
+    return render(request, "home/rules.html")

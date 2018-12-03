@@ -4,7 +4,7 @@
 
 
 
-<form method="POST" action="{% url 'add_selection_confirmed' %}">
+<form method="POST" action="{% url 'add_selection_confirmed' day %}">
     <div class="container">
         <div class ="row">
             <div class="form-group col-sm-12 col-md-12 col-lg-12">
@@ -17,16 +17,23 @@
                 
                 {% for race in races %}
                 <p> 
-                    <label for="id_race_{{race.id}}">{{race.time}} - {{race.name}}:</label>
-                    <select id="id_race_{{race.id}}" type="text" name="race_{{race.id}}"/>
-                        <option value="">--Please choose a horse--</option>
-                    {% for runner in race.runners.all %}
-                        <option value="{{runner.name}}">{{runner.name}}</option>
-                    {% endfor %}
-                    </select>
+                    {% if race_start_time is False %} 
+                        <label for="id_race_{{race.id}}">{{race.time}} - {{race.name}}:</label>
+                        <select id="id_race_{{race.id}}" type="text" name="race_{{race.id}}"/>
+                            <option value="">--Please choose a horse--</option>
+                        {% for runner in race.runners.all %}
+                            <option value="{{runner.name}}">{{runner.name}}</option>
+                        {% endfor %}
+                        </select>
+                    {% else %}
+                        <label for="id_race_{{race.id}}">{{race.time}} - {{race.name}}:</label>
+                        {% for selection in selections %}
+                        {{selection }}
+                        {% endfor %}
+                        
                 </p>
                 {% endfor %}
-                <input type="hidden" name="day" value={{1}}>
+                <input type="hidden" name="day" value={{day}}>
                 <input class="btn btn-primary" type="submit" value="Submit Selections"/>
             
             </div>
