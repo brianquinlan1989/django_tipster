@@ -9,13 +9,13 @@ class Day(models.Model):
     locked = models.BooleanField()
 
     def __str__(self):
-        return "{0}".format(self.locked)
+        return "{0}-{1}".format(self.id, self.locked)
         
         
 class Race(models.Model):
     name = models.CharField(max_length=50, blank=False)
     time = models.CharField(max_length=50, blank=False)
-    day = models.IntegerField(default=0)
+    day = models.ForeignKey(Day, null=False, blank=False, on_delete=models.PROTECT)
     
     def __str__(self):
         return self.name

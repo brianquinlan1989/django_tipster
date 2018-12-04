@@ -50,11 +50,7 @@
            
             <div class="col-xs-12 col-sm-6 col-lg-3 col-md-3">
                 {% if race_start_time is True %}
-                    {% if user_selection_is_picked_day1 is True %}
-                        <a href="#" class="btn btn-primary">Edit Day 1 Selections</a>
-                    {% else%}
-                        <a href="{% url 'add_selection' 1 %}" class="btn btn-primary">Day 1 Selections</a>
-                    {% endif%}
+                    <a href="{% url 'add_selection' 1 %}" class="btn btn-primary">Day 1 Selections</a>
                 {% else %}
                     <p>1.30pm was the deadline for selections</p>
                 {% endif %}            
@@ -64,11 +60,7 @@
             
             <div class="col-xs-12 col-sm-6 col-lg-3 col-md-3">
                 {% if race_start_time is True %}
-                    {% if user_selection_is_picked_day2 is True %}
-                        <a href="#" class="btn btn-primary">Edit Day 2 Selections</a>
-                    {% else%}
-                        <a href="{% url 'add_selection' 2 %}" class="btn btn-primary">Day 2 Selections</a>
-                    {% endif%}
+                    <a href="{% url 'add_selection' 2 %}" class="btn btn-primary">Day 2 Selections</a>
                 {% else %}
                     <p>1.30pm was the deadline for selections</p>
                 {% endif %}
@@ -78,11 +70,7 @@
 
             <div class="col-xs-12 col-sm-6 col-lg-3 col-md-3">
                 {% if race_start_time is True %}
-                    {% if user_selection_is_picked_day3 is True %}
-                        <a href="#" class="btn btn-primary">Edit Day 3 Selections</a>
-                    {% else%}
-                        <a href="{% url 'add_selection' 3 %}" class="btn btn-primary">Day 3 Selections</a>
-                    {% endif%}
+                    <a href="{% url 'add_selection' 3 %}" class="btn btn-primary">Day 3 Selections</a>
                 {% else %}
                     <p>1.30pm was the deadline for selections</p>
                 {% endif %}
@@ -91,11 +79,7 @@
             
             <div class="col-xs-12 col-sm-6 col-lg-3 col-md-3">
                  {% if race_start_time is True %}
-                    {% if user_selection_is_picked_day4 is True %}
-                        <a href="#" class="btn btn-primary">Edit Day 4 Selections</a>
-                    {% else%}
-                        <a href="{% url 'add_selection' 4 %}" class="btn btn-primary">Day 4 Selections</a>
-                    {% endif%}
+                    <a href="{% url 'add_selection' 4 %}" class="btn btn-primary">Day 4 Selections</a>
                 {% else %}
                     <p>1.30pm was the deadline for selections</p>
                 {% endif %}

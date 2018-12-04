@@ -17,29 +17,26 @@ def time_in_range(start, end, x):
 
 def show_home(request):
     start = datetime.time(17, 0, 0)
-    end = datetime.time(13, 46, 0)
+    end = datetime.time(16, 59, 0)
     race_start_time = time_in_range(start, end, datetime.datetime.now().time())
-
-
-    user_selection_is_picked_day1 = False
-    user_selection_is_picked_day2 = False
-    user_selection_is_picked_day3 = False
-    user_selection_is_picked_day4 = False
     
-    context = {"race_start_time":race_start_time, 'user_selection_is_picked_day1':user_selection_is_picked_day1, 'user_selection_is_picked_day2':user_selection_is_picked_day2, 'user_selection_is_picked_day3':user_selection_is_picked_day3, 'user_selection_is_picked_day4':user_selection_is_picked_day4 }
-    
-    return render(request, "home/index.html", context )
+    return render(request, "home/index.html", {"race_start_time":race_start_time})
 
 
 def add_selection(request, day):
         races = Race.objects.filter(day = day)
-        return render(request, "home/add_selection.html", {'races':races, 'day':day})
+        selections = Selection.objects.filter(user = request.user)
+        selected_runners = [selection.runner for selection in selections if selection.runner.race.day_id == day]
+        
+        # runners = Runner.objects.filter()
+        # print(selections)
+        return render(request, "home/add_selection.html", {'races':races, 'day':day, 'selected_runners': selected_runners})
         
 def add_selection_confirmed(request, day):
     
     selections = Selection.objects.filter(user=request.user)
     for selection in selections:
-        if selection.runner.race.day == day:
+        if selection.runner.race.day_id == day:
             selection.delete()
     
     for key,value in request.POST.items():

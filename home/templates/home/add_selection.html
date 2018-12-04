@@ -2,8 +2,9 @@
 {% load bootstrap_tags %}
 {% block content %}
 
+{{ selected_runners }}
 
-
+  
 <form method="POST" action="{% url 'add_selection_confirmed' day %}">
     <div class="container">
         <div class ="row">
@@ -17,20 +18,18 @@
                 
                 {% for race in races %}
                 <p> 
-                    {% if race_start_time is False %} 
                         <label for="id_race_{{race.id}}">{{race.time}} - {{race.name}}:</label>
                         <select id="id_race_{{race.id}}" type="text" name="race_{{race.id}}"/>
                             <option value="">--Please choose a horse--</option>
                         {% for runner in race.runners.all %}
+                            {% if runner in selected_runners %}
+                            <option value="{{runner.name}}" selected>{{runner.name}}</option>
+                            {% else %}
                             <option value="{{runner.name}}">{{runner.name}}</option>
-                        {% endfor %}
-                        </select>
-                    {% else %}
-                        <label for="id_race_{{race.id}}">{{race.time}} - {{race.name}}:</label>
-                        {% for selection in selections %}
-                        {{selection }}
+                            {% endif %}
                         {% endfor %}
                         
+                        </select>
                 </p>
                 {% endfor %}
                 <input type="hidden" name="day" value={{day}}>
