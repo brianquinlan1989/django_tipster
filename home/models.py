@@ -24,7 +24,7 @@ class Runner(models.Model):
     name = models.CharField(max_length=100, blank=False)
     race = models.ForeignKey(Race, null=False, related_name="runners", on_delete=models.PROTECT)
     position = models.IntegerField(default=0)
-    odds = models.DecimalField(max_digits=4, decimal_places=2, null=False)
+    odds = models.DecimalField(max_digits=4, decimal_places=2, null=False, default=0)
     
     @property
     def score(self):

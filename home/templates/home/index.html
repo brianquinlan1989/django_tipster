@@ -47,24 +47,25 @@
     <div class="container">
         <div class="row">
            
-           
-                <div class="col-xs-12 col-sm-6 col-lg-3 col-md-3">
-                    {% if race_start_time is True %}
-                        <a href="{% url 'add_selection' 1 %}" class="btn btn-primary">Day 1 Selections</a>
+            
+            <div class="col-xs-12 col-sm-6 col-lg-3 col-md-3">
+                {% if race_start_time is True %}
+                    <a href="{% url 'add_selection' 1 %}" class="btn btn-primary">Day 1 Selections</a>
+                {% else %}
+                    <p><a href="{% url 'add_selection_confirmed' 1 %}" class="btn btn-primary">Day 1 deadline has passed</a></p>
+                {% endif %}
 
-                    {% endif %}            
-                </div>
-            
-            
-            
-            
-                <div class="col-xs-12 col-sm-6 col-lg-3 col-md-3">
-                    {% if race_start_time is True %}
-                        <a href="{% url 'add_selection' 2 %}" class="btn btn-primary">Day 2 Selections</a>
-                    {% else %}
-                        <p><a href="{% url 'add_selection_confirmed' 2 %}" class="btn btn-primary">Day 2 Selections - 13.30 deadline has passed</a></p>
-                    {% endif %}
-                </div>
+                        
+            </div>
+
+        
+            <div class="col-xs-12 col-sm-6 col-lg-3 col-md-3">
+                {% if race_start_time is True %}
+                    <a href="{% url 'add_selection' 2 %}" class="btn btn-primary">Day 2 Selections</a>
+                {% else %}
+                    <p><a href="{% url 'add_selection_confirmed' 2 %}" class="btn btn-primary">Day 2 deadline has passed</a></p>
+                {% endif %}
+            </div>
             
 
 
@@ -73,7 +74,7 @@
                 {% if race_start_time is True %}
                     <a href="{% url 'add_selection' 3 %}" class="btn btn-primary">Day 3 Selections</a>
                 {% else %}
-                    <p><a href="{% url 'add_selection_confirmed' 3 %}" class="btn btn-primary">Day 3 Selections - 13.30 deadline has passed</a></p>
+                    <p><a href="{% url 'add_selection_confirmed' 3 %}" class="btn btn-primary">Day 3 deadline has passed</a></p>
                 {% endif %}
              </div>
 
@@ -82,9 +83,10 @@
                  {% if race_start_time is True %}
                     <a href="{% url 'add_selection' 4 %}" class="btn btn-primary">Day 4 Selections</a>
                 {% else %}
-                    <p><a href="{% url 'add_selection_confirmed' 4 %}" class="btn btn-primary">Day 4 Selections - 13.30 deadline has passed</a></p>
+                    <p><a href="{% url 'add_selection_confirmed' 4 %}" class="btn btn-primary">Day 4 deadline has passed</a></p>
                 {% endif %}
             </div>
+            
             
             
     <div class="container">
