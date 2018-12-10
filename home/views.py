@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404, HttpResponse
+from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
 import datetime
-from .models import Race, Runner, Selection
+from .models import Race, Runner, Selection, Day
 from accounts.models import Profile
 from django.contrib.auth.models import User
 
@@ -17,22 +17,29 @@ def time_in_range(start, end, x):
 
 def show_home(request):
     start = datetime.time(17, 0, 0)
-    end = datetime.time(16, 59, 0)
+    end = datetime.time(13, 30, 0)
     race_start_time = time_in_range(start, end, datetime.datetime.now().time())
     
     return render(request, "home/index.html", {"race_start_time":race_start_time})
 
 
 def add_selection(request, day):
+    active_day = get_object_or_404(Day, pk=day)
+    
+    if active_day.locked or time_in_range(datetime.time(12, 30, 0), datetime.time(23, 59, 0), datetime.datetime.now().time() ) :
+        return redirect("add_selection_confirmed", day)
+        
+    else:
         races = Race.objects.filter(day = day)
         selections = Selection.objects.filter(user = request.user)
         selected_runners = [selection.runner for selection in selections if selection.runner.race.day_id == day]
-        
-        # runners = Runner.objects.filter()
-        # print(selections)
+ 
         return render(request, "home/add_selection.html", {'races':races, 'day':day, 'selected_runners': selected_runners})
         
+        
+        
 def add_selection_confirmed(request, day):
+    
     
     selections = Selection.objects.filter(user=request.user)
     for selection in selections:

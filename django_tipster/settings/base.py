@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'home',
     'django_forms_bootstrap',
     'django_tables2', 
-    'storages'
+    'storages',
+    'billing'
     
 ]
 
@@ -133,4 +134,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SYSTEM_EMAIL = 'admin@mysitename.com'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
 
