@@ -13,7 +13,7 @@ class Day(models.Model):
         
         
 class Race(models.Model):
-    name = models.CharField(max_length=50, blank=False)
+    name = models.CharField(max_length=150, blank=False)
     time = models.CharField(max_length=50, blank=False)
     day = models.ForeignKey(Day, null=False, blank=False, on_delete=models.PROTECT)
     
@@ -21,7 +21,7 @@ class Race(models.Model):
         return self.name
 
 class Runner(models.Model):
-    name = models.CharField(max_length=50, blank=False)
+    name = models.CharField(max_length=100, blank=False)
     race = models.ForeignKey(Race, null=False, related_name="runners", on_delete=models.PROTECT)
     position = models.IntegerField(default=0)
     odds = models.DecimalField(max_digits=4, decimal_places=2, null=False)
