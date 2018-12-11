@@ -1,39 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Profile</h1>
 
-<div class="col-md-12">
-    <img src="{{ MEDIA_URL }}{{ request.user.profile.image }}"/>
+
+<div class="container">
+    <h1>Profile</h1>
+    <div class="row">
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <img src="{{ MEDIA_URL }}{{ request.user.profile.image }}"/>
+            <h3>First Name: {{ request.user.first_name }}</h3>
+            <h3>Surname Name: {{ request.user.last_name }}</h3>
+            <h3>Email: {{ request.user.email }}</h3>
+            <h3>Tipster Knowledge: Legendary</h3>
+        </div>
+    <h1>Payment</h1>
+    <div class="row">
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            {% if user.profile.paid %}
+                <div class="alert alert-success" role="alert">
+                  <h4 class="alert-heading">Congratulations</h4>
+                  <p>You have successfully paid</p>
+                  <a href="{% url 'add_selection' 1 %}" class="btn btn-primary mb-0">Day 1 Selections</a>
+                </div>
+            {% else %}
+                <a href="{% url 'make_payment' %}">Make Payment</a>
+            {% endif %}
+        </div>
+    </div>
 </div>
-
-
-<div class="col-md-6">
-    
-    <h3>First Name: {{ request.user.first_name }}</h3>
-    <h3>Surname Name: {{ request.user.last_name }}</h3>
-    <h3>Email: {{ request.user.email }}</h3>
-    <h3>Tipster Knowledge: Legendary</h3>
-    
-</div>
-
-<div class="col-md-6">
-<h2>Payment</h2>
-{% if user.profile.paid %}
-
-<div class="alert alert-success" role="alert">
-  <h4 class="alert-heading">Congratulations</h4>
-  <p>You have successfully paid</p>
-  <a href="{% url 'add_selection' 1 %}" class="btn btn-primary mb-0">Day 1 Selections</a>
-</div>
-
-
-{% else %}
-<a href="{% url 'make_payment' %}">Make Payment</a>
-
-{% endif %}
-
-
-
 
 {% endblock %}

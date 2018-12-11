@@ -24,4 +24,10 @@ footer {
     margin-top: 20px;
 }
 
+.fa-check {
+    color: green
+}
 
+.winner {
+    color: green
+}

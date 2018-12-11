@@ -2,6 +2,8 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from .forms import SignUpForm, ProfileForm
 
+
+# renders the sign up page, allows user to sign up
 def signup(request):
     if request.method == 'POST':
         user_form = SignUpForm(request.POST)
@@ -22,6 +24,7 @@ def signup(request):
         user_form = SignUpForm()
         profile_form = ProfileForm()
     return render(request, 'registration/signup.html', {'user_form': user_form, 'profile_form':profile_form})
-    
+
+# renders the profile page for the user signed in.  
 def show_profile(request):
     return render(request, 'profile.html')
