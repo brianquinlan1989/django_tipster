@@ -24,7 +24,7 @@
     {% endblock head_scripts %}
 </head>
 
-<body class = "background-image">
+<body>
     <!-- Fixed masthead -->
     <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
         <div class="container">
@@ -48,7 +48,16 @@
                     <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Log In</a></li>
                     {% endif %}
                     <li><a href="{% url 'show_rules' %}">How To Play</a></li>
-                     <li><a href="#">Images</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">Images</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Course Info</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
                     
                 </ul>
             </div>
@@ -66,7 +75,8 @@
     <div class="container">
         <br>
         <div class="row">
-            {% block content %} {% endblock %}
+            {% block content %} 
+            {% endblock %}
         </div>
     </div>
     <footer>

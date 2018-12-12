@@ -1,6 +1,7 @@
 body {
     font-family: Arial;
     padding-top: 100px;
+    background-image: url("images/cheltenham.jpg");
      
 }
 
@@ -12,22 +13,46 @@ footer {
     color: #A9A9A9;
 }
 
+
+
+/*---base.html---*/
 .icon-bar {
     background-color: #fff;
 }
-
-.accountform {
-    padding-top: 20px;
+/*---index.html---*/
+.left-background {
+    background-color:grey;
+    height: 525px;
 }
 
-.btn {
+.select-button-margin {
+    margin-top: 5px;
+}
+
+hr {
     margin-top: 20px;
-}
-
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 1px solid #f8f5f0;
+/*---add_selection.html---*/
+/*---add_selection_confirmed.html---*/
+/*---leaderboard.html---*/
+/*---user_selection.html---*/
 .fa-check {
     color: green
 }
-
 .winner {
     color: green
 }
+/*---rules.html---*/
+/*---profile.html---*/
+/*---login.html---*/
+/*---password_reset_complete.html---*/
+/*---password_reset_confirm.html---*/
+/*---password_reset_done.html---*/
+/*---password_reset_email.html---*/
+/*---password_reset_form.html---*/
+.accountform {
+    padding-top: 20px;
+}
+/*---make_payment.html---*/
