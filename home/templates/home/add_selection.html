@@ -2,23 +2,20 @@
 {% load bootstrap_tags %}
 {% block content %}
 
-  
 <form method="POST" action="{% url 'add_selection_confirmed' day %}">
     <div class="container">
-        <div class ="row">
-            <div class="form-group col-sm-12 col-md-12 col-lg-12">
+        <div class ="row add-selection-margin">
+            <center><h1>Day {{day}} - Race Selections</h1></center>
+            <hr>
+            
+            <center><div class="form-group col-sm-12 col-md-6 col-lg-6">
                 {% csrf_token %}
-               
-                <h1>Day {{day}} - Race selections</h1>
-                <hr>
-               
-               
-                
-                {% for race in races %}
-                <p> 
-                        <label for="id_race_{{race.id}}">{{race.time}} - {{race.name}}:</label>
+                <div class="thumbnail">
+                    {% for race in races %}
+                    <p>
+                        <label for="id_race_{{race.id}}">{{race.time}} - {{race.name}}</label><br>
                         <select id="id_race_{{race.id}}" type="text" name="race_{{race.id}}"/>
-                            <option value="">--Please choose a horse--</option>
+                            <option>--Please choose a horse--</option>
                         {% for runner in race.runners.all %}
                             {% if runner in selected_runners %}
                             <option value="{{runner.name}}" selected>{{runner.name}}</option>
@@ -26,16 +23,29 @@
                             <option value="{{runner.name}}">{{runner.name}}</option>
                             {% endif %}
                         {% endfor %}
-                        
                         </select>
-                </p>
-                {% endfor %}
-                <input type="hidden" name="day" value={{day}}>
-                <input class="btn btn-primary" type="submit" value="Submit Selections"/>
+                    </p>
+                    {% endfor %}
+                    <input type="hidden" name="day" value={{day}}>
+                    <input class="btn btn-primary" type="submit" value="Submit Selections"/>
+                </div>
+            </div></center>
             
+            <center><div class="form-group col-sm-12 col-md-3 col-lg-3">
+                <iframe width="260" height="200" src="https://www.youtube.com/embed/SP9FaLjyqO4?start=20" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+            <div class="form-group col-sm-12 col-md-3 col-lg-3">
+                <iframe width="260" height="200" src="https://www.youtube.com/embed/1CEdTeo0v6w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="form-group col-sm-12 col-md-3 col-lg-3">
+                <iframe width="260" height="200" src="https://www.youtube.com/embed/-3BASuHO-tw?start=30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="form-group col-sm-12 col-md-3 col-lg-3">
+                <iframe width="260" height="200" src="https://www.youtube.com/embed/5JtDOs9nljY?start=60" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div></center>
         </div>
     </div>
+    <hr>
 </form>
 
 {% endblock %}

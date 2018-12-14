@@ -6,7 +6,6 @@ body {
 }
 
 footer {
-    margin-top: 40px;
     padding-top: 40px;
     padding-bottom: 40px;
     border-top: 1px solid #ededed;
@@ -15,28 +14,46 @@ footer {
 
 
 
+
+
 /*---base.html---*/
 .icon-bar {
     background-color: #fff;
 }
 /*---index.html---*/
-.left-background {
-    background-color:grey;
+.dashboard {
+    background-color: grey;
     height: 525px;
+    color:#d9d9d9;
 }
 
 .select-button-margin {
     margin-top: 5px;
 }
 
+.my-horses-button {
+    margin-right: 20px;
+}
+
 hr {
     margin-top: 20px;
     margin-bottom: 10px;
     border: 0;
-    border-top: 1px solid #f8f5f0;
+    border-top: 1px solid black;
+}
+
 /*---add_selection.html---*/
+.add-selection-margin {
+    margin-top: -50px;
+}
 /*---add_selection_confirmed.html---*/
 /*---leaderboard.html---*/
+.leaderboard-table-name {
+    width: 275px;
+}
+.leaderboard-margin {
+    margin-top: -50px;
+}
 /*---user_selection.html---*/
 .fa-check {
     color: green

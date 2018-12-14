@@ -3,47 +3,55 @@
 {% block head_styles %} {{ block.super }}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> {% endblock %} {% block content %}
 
-
-
-
 <div class="container">
-    <div class ="row">
-        <div class="form-group col-sm-12 col-md-12 col-lg-12">
-            <h1>Your Race Selections Confirmed</h1>
-            <input type="text" id="userSelectionInput" onkeyup="searchDay()" placeholder="Enter 'Race Day' Number" title="Type a number 1-4">
-            
-                  
-                 <table id="userSelectionTable" class="table">
-                  <thead>
-                    <tr>
-                        <th onclick="sortTable(0)" scope="col">Race Day</th> 
-                        <th onclick="sortTable(1)" scope="col">Race Time</th>
-                        <th onclick="sortTable(2)" scope="col">Race Name</th>
-                        <th onclick="sortTable(3)" scope="col">Horse Name</th>
-                    </tr>
-                  </thead>
-                  <tbody>  
-             
-                    {% for selection in user.selections.all %} 
-                    <tr>
-                        <td>Day {{selection.runner.race.day.id}}</td>
-                        <td>{{selection.runner.race.time}}</td>
-                        <td>{{selection.runner.race}}</td>
-                        <td><strong>{{selection.runner.name}}</strong></td>
-                    </tr>
-                    {% endfor %}
-                    </tbody>
-                    </table>
-        </div>
+  <div class ="row">
+    <div class="form-group col-sm-12 col-md-12 col-lg-12">
+      <h1>Your Race Selections Confirmed</h1>
+      <input type="text" id="userSelectionInput" onkeyup="searchDay()" placeholder="Enter 'Race Day' Number" title="Type a number 1-4">
+      <table id="userSelectionTable" class="table">
+        <thead>
+          <tr>
+            <th onclick="sortTable(0)" scope="col">Race Day</th> 
+            <th onclick="sortTable(1)" scope="col">Race Time</th>
+            <th onclick="sortTable(2)" scope="col">Race Name</th>
+            <th onclick="sortTable(3)" scope="col">Horse Name</th>
+            <th onclick="sortTable(4)" scope="col">Score</th>
+            <th onclick="sortTable(4)" scope="col">Winner</th>
+          </tr>
+        </thead>
+        <tbody>  
+          {% for selection in user.selections.all %} 
+          <tr>
+            <td>Day {{selection.runner.race.day.id}}</td>
+            <td>{{selection.runner.race.time}}</td>
+            <td>{{selection.runner.race}}</td>
+            <td>{{selection.runner.name}}</td>
+            <td>{{selection.runner.score}}</td>
+            {% if selection.runner.position is 1 %}
+            <td>Winner</td>
+            {% elif selection.runner.position is 2 %}
+            <td>Place</td>
+            {% elif selection.runner.position is 3 %}
+            <td>Place</td>
+            {% elif selection.runner.position is 4 %}
+            <td>Place</td>
+            {% else  %}
+            <td>-</td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-            <a href="{% url 'home' %}" class="btn btn-primary" value="view_leaderboard">Home</a>
-        </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+      <a href="{% url 'home' %}" class="btn btn-primary" value="view_leaderboard">Home</a>
     </div>
+  </div>
 </div>
 
 <script>
@@ -122,9 +130,5 @@ function sortTable(n) {
   }
 }
 </script>
-
-
-    
-
 
 {% endblock %}

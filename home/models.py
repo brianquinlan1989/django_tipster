@@ -11,7 +11,6 @@ class Day(models.Model):
     def __str__(self):
         return "{0}-{1}".format(self.id, self.locked)
         
-        
 class Race(models.Model):
     name = models.CharField(max_length=150, blank=False)
     time = models.CharField(max_length=50, blank=False)

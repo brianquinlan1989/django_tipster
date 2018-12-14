@@ -18,11 +18,33 @@ def time_in_range(start, end, x):
         
 # renders the view for the index/home page
 def show_home(request):
-    start = datetime.time(17, 0, 0)
-    end = datetime.time(16, 59, 0)
+    start = datetime.time(23, 0, 0)
+    end = datetime.time(22, 59, 0)
     race_start_time = time_in_range(start, end, datetime.datetime.now().time())
     
-    return render(request, "home/index.html", {"race_start_time":race_start_time})
+    winners = 0
+    places = 0
+    if request.user.is_authenticated:
+        for selection in request.user.selections.all():
+            if selection.runner.position is 1:
+                winners +=1
+                
+    if request.user.is_authenticated:
+        for selection in request.user.selections.all():
+            if selection.runner.position is 2:
+                places +=1
+                
+    if request.user.is_authenticated:
+        for selection in request.user.selections.all():
+            if selection.runner.position is 3:
+                places +=1
+                
+    if request.user.is_authenticated:
+        for selection in request.user.selections.all():
+            if selection.runner.position is 4:
+                places +=1
+                
+    return render(request, "home/index.html", {"race_start_time":race_start_time, 'winners':winners, 'places':places})
 
 # renders the view for selecting horses, editing selections. Also if the user is logged in but not paid, this function will be redirected to payment page
 def add_selection(request, day):
@@ -30,7 +52,7 @@ def add_selection(request, day):
         return redirect("make_payment")
     
     active_day = get_object_or_404(Day, pk=day)
-    if active_day.locked or time_in_range(datetime.time(23, 30, 0), datetime.time(23, 59, 0), datetime.datetime.now().time() ) :
+    if active_day.locked or time_in_range(datetime.time(23, 58, 0), datetime.time(23, 59, 0), datetime.datetime.now().time() ) :
         return redirect("add_selection_confirmed", day)
         
     else:
