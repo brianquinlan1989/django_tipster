@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %} 
 {% block head_styles %} {{ block.super }}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> {% endblock %} {% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+{% endblock %} 
+{% block content %}
 
 <div class="container">
     <div class="row leaderboard-margin">
@@ -21,7 +26,7 @@
                     {% for profile in profiles|dictsortreversed:"score"%}
                     <tr class="table-danger">
                         <td>
-                            <a href="{%url 'show_your_selection_leaderboard' day=4 id=profile.user.id %}">{{profile.user.first_name}} {{profile.user.last_name}}</a>
+                            <a href="{%url 'show_your_selection_leaderboard' day=1 id=profile.user.id %}">{{profile.user.first_name}} {{profile.user.last_name}}</a>
                         </td>
                         <td>{{profile.score}}</td>
                     </tr>
@@ -29,6 +34,1398 @@
                     
                 </tbody>
             </table>
+        </div>
+        <div class="col-xs-12 sm-col-12 col-md-8 col-lg-8">
+        <center><h1>Results - <span><button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Day 1</button></span><span><button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo1">Day 2</button></span><span><button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo2">Day 3</button></span><span><button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo3">Day 4</button></span></h1></center>
+            <div id="demo" class="collapse">
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Sky Bet Supreme Novices' Hurdle</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 1 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% else %}
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Racing Post Arkle Challenge Trophy Novices' Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 2 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Ultima Handicap Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 3 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Unibet Champion Hurdle Challenge Trophy</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 4 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>OLBG Mares' Hurdle</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 5 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>National Hunt Challenge Cup Amateur Riders' Novices' Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 6 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Close Brothers Novices' Handicap Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 7 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div> 
+                <hr>
+            </div>
+            <div id="demo1" class="collapse">
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Ballymore Novices' Hurdle</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 8 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>RSA Insurance Novices' Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 9 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Coral Cup Handicap Hurdle</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 10 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Betway Queen Mother Champion Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 11 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Glenfarclas Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 12 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Boodles Fred Winter Juvenile Handicap Hurdle</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 13 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Weatherbys Champion Bumper</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 14 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div id="demo2" class="collapse">
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>JLT Novices' Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 15 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Pertemps Network Final Handicap Hurdle</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 16 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Ryanair Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 17 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Sun Bets Stayers' Hurdle</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 18 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Brown Advisory & Merriebelle Stable Plate Handicap Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 19 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Trull House Stud Mares' Novices' Hurdle</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 20 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Fulke Walwyn Kim Muir Challenge Cup Amateur Riders' Handicap Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 21 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div id="demo3" class="collapse">
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>JCB Triumph Hurdle</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 22 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Randox Health County Handicap Hurdle</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 23 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Albert Bartlett Novices' Hurdle</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 24 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Timico Cheltenham Gold Cup Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 25 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>St. James's Place Foxhunter Challenge Cup Open Hunters' Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 26 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Martin Pipe Conditional Jockeys' Handicap Hurdle</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 27 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 sm-col-12 col-md-6 col-lg-6">
+                        <center><h3>Johnny Henderson Grand Annual Challenge Cup Handicap Chase</h3></center>
+                        <center>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><center>Position</center></th>
+                                        <th scope="col"><center>Horse</center></th>
+                                        <th scope="col"><center class="odds-margin">Odds</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for runner in runners|dictsort:"position" %}
+                                    {% if runner.race.id is 28 %}
+                                    <tr>
+                                        {% if runner.position is 1 %}
+                                            <td>{{runner.position}}st</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 2%}
+                                            <td>{{runner.position}}nd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}   
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 3%}
+                                            <td>{{runner.position}}rd</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    <tr>
+                                        {% if runner.position is 4%}
+                                            <td>{{runner.position}}th</td>
+                                            <td><center>{{runner.name}}</center></td>
+                                            <td class="pull-right">{{runner.odds}}</td>
+                                        {% endif %}  
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <hr>
+            </div>
         </div>
     </div>
 </div>

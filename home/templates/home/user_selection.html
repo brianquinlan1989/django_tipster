@@ -12,9 +12,11 @@
   <div class="row">
     <div class="col-xs-12 sm-col-12 col-md-12 col-lg-12">
       <h1>{{user.first_name}} {{user.last_name}}'s Selections</h1>
+      <center>
       {% for num in range%}
-      <a href="{% url 'show_your_selection_leaderboard' day=num id=user.id%}" class="btn btn-success">Day {{ num }} Selections</a>
-      {% endfor %}
+      <a href="{% url 'show_your_selection_leaderboard' day=num id=user.id%}">| Day {{ num }} Selections</a>
+      {% endfor %} |
+      </center>
       <hr>
       <table id=userSelections class="table">
         <thead>

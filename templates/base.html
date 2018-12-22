@@ -51,9 +51,9 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <center><a class="dropdown-item" href="#">Images</a></center>
+                          <center><a class="dropdown-item" href="{% url 'show_images' %}">Gallery</a></center>
                           <div class="dropdown-divider"></div>
-                          <center><a class="dropdown-item" href="#">Course Info</a></center>
+                          <center><a class="dropdown-item" href="{% url 'show_course_info' %}">Course Info</a></center>
                           <div class="dropdown-divider"></div>
                           <center><a class="dropdown-item" href="#">Something else here</a></center>
                         </div>
@@ -79,11 +79,6 @@
             {% endblock %}
         </div>
     </div>
-    <footer>
-        <div class="container">
-            <p>Made by Brian Quinlan Web Development</p>
-        </div>
-    </footer>
 </body>
 
 </html>

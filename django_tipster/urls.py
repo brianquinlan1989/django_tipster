@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from home.views import show_home, add_selection, add_selection_confirmed, show_leaderboard, show_your_selection_leaderboard, show_rules
+from home.views import show_home, add_selection, add_selection_confirmed, show_leaderboard, show_your_selection_leaderboard, show_rules, show_images, show_course_info
 from billing.views import make_payment
 # from django.views.static import serve
 
@@ -28,14 +28,17 @@ urlpatterns = [
     path('add_selection/day/<int:day>', add_selection, name="add_selection"),
     path('selection_confirmed/<int:day>', add_selection_confirmed, name="add_selection_confirmed"),
     path('leaderboard/', show_leaderboard, name="leaderboard"),
+    # path('results/<int:day>', show_results, name="results"),
     path('your_selection/day/<int:day>/user/<int:id>', show_your_selection_leaderboard, name="show_your_selection_leaderboard"),
     path('how to play', show_rules, name='show_rules'),
+    path('images', show_images, name='show_images'),
+    path('course_info', show_course_info, name='show_course_info'),
+    
     # account urls
     path('accounts/profile', show_profile, name='profile'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', signup, name='signup'),
     # billing urls
-
     path('billing/make_payment/', make_payment, name='make_payment'),
     
     #  path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT}),

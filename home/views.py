@@ -28,21 +28,8 @@ def show_home(request):
         for selection in request.user.selections.all():
             if selection.runner.position is 1:
                 winners +=1
-                
-    if request.user.is_authenticated:
-        for selection in request.user.selections.all():
-            if selection.runner.position is 2:
-                places +=1
-                
-    if request.user.is_authenticated:
-        for selection in request.user.selections.all():
-            if selection.runner.position is 3:
-                places +=1
-                
-    if request.user.is_authenticated:
-        for selection in request.user.selections.all():
-            if selection.runner.position is 4:
-                places +=1
+            elif selection.runner.position is 2 or selection.runner.position is 3 or selection.runner.position is 4:
+                 places +=1
                 
     return render(request, "home/index.html", {"race_start_time":race_start_time, 'winners':winners, 'places':places})
 
@@ -81,7 +68,13 @@ def add_selection_confirmed(request, day):
 # renders the view of the leaderboard
 def show_leaderboard(request):
     profiles = Profile.objects.all()
-    return render(request, "home/leaderboard.html", {'profiles':profiles})
+    runners = Runner.objects.all()
+    races = Race.objects.all()
+    return render(request, "home/leaderboard.html", {'profiles':profiles, 'runners':runners, 'races':races})
+    
+# def show_results(request, day):
+#     selections = Selection.objects.filter(runner__race__day = day)
+#     return render(request, "home/leaderboard.html", {'range':range(1,5), 'selections':selections})
 
 # renders the view when you click on a user's name from the leaderboard    
 def show_your_selection_leaderboard(request, day, id):
@@ -93,3 +86,11 @@ def show_your_selection_leaderboard(request, day, id):
 # Rules/How to play
 def show_rules(request):
     return render(request, "home/rules.html")
+    
+# Images
+def show_images(request):
+    return render(request, "home/images.html")
+    
+# Course Info
+def show_course_info(request):
+    return render(request, "home/course_info.html")

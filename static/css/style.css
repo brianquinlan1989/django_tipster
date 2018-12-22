@@ -1,15 +1,8 @@
 body {
     font-family: Arial;
     padding-top: 100px;
-    background-image: url("images/cheltenham.jpg");
-     
-}
-
-footer {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    border-top: 1px solid #ededed;
-    color: #A9A9A9;
+    background-color: black;
+    
 }
 
 
@@ -54,6 +47,9 @@ hr {
 .leaderboard-margin {
     margin-top: -50px;
 }
+.odds-margin {
+    margin-left: 25px;
+}
 /*---user_selection.html---*/
 .fa-check {
     color: green
@@ -62,6 +58,15 @@ hr {
     color: green
 }
 /*---rules.html---*/
+.text-color {
+    color: white;
+}
+
+/*---images.html---*/
+.images-html-background-colour {
+    background-color: darkgrey;
+}
+/*---course_info.html---*/
 /*---profile.html---*/
 /*---login.html---*/
 /*---password_reset_complete.html---*/
@@ -73,3 +78,7 @@ hr {
     padding-top: 20px;
 }
 /*---make_payment.html---*/
+
+.size {
+    height:100vh;
+}

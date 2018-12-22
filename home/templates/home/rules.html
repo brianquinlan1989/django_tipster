@@ -2,30 +2,116 @@
 {% load bootstrap_tags %}
 {% block content %}
 
+<center><h1>How The Game Works</h1></center>
+
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 sm-col-12 col-md-12 col-lg-12">
-            <h1>How The Game Works</h1>
-            <div>
-                <ol>
-                    <li>Entry fee is €20.00.</li>
-                    <li>Pick one horse per race each day.</li>
-                    <li>Person with the most amount of points at the end of Day 4 is the winner.</li>
-                    <li>Prize money and number of winners will depend on number of entries.</li>
-                    <li>Points are awarded on the return starting price odds of the horse. (eg. starting price odds @ 4/1 returns you 4 points)</li>
-                    <li>If your horse places, you receive ¼ of the points regardless of the type of race. </li>
-                    <li>The number of places in a race and odds will be determined by PaddyPower website.</li>
-                    <li>Selections must be made before 13.30 each day or entry will be invalid. You can not edit your selections after 13.30 for any race.</li>
-                    <li>If your selection happens to become a non-runner, you will be giving horse number 1 in the race. </li>
-                    <li>Leaderboard will be updated each evening with points total.</li>
-                    <li>In the unlikely event of a tie, the winner will be determined by the number of winners, and then the number of places if needs be.</li>
-                </ol>
+        <div class="col-xs-12 sm-col-12 col-md-4 col-lg-4">
+            <h2>The Boring Stuff</h2>
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link text-color" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">How Much Do I Have To Pay?</button>
+                        </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul>
+                                <li class="text-color">
+                                    <p>Entry fee is €25.00</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">How Do I Play?</button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul>
+                                <p><li>Pick one horse per race each day</li></p>
+                                <p><li>Make your selections for Day 1 before 13.30 on Tuesday. Follow suit for the other 3 days</li></p>
+                                <p><li>You can edit your selections as many times upto the deadline</li></p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">How Can I Win?</button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul>
+                                <p><li>The person with the most points at the end of Day 4 is the winner</li></p>
+                                <p><li>Points are awarded on the return starting price odds of the horse. (eg. starting price odds @ 4/1 returns you 4 points)</li></p>
+                                <p><li>If your horse places, you receive ¼ of the points regardless of the type of race</li></p>
+                                <p><li>The number of places in a race will be determined by PaddyPower website</li></p>
+                                <p><li>The return starting price will be determined by SportingLife website</li></p>
+                                <p><li>Prize money and number of winners will depend on number of entries</li></p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">The Boring Bits(But Important)</button>
+                        </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul>
+                                <p><li>Selections must be made before 13.30 each day or entry will be invalid. You can not edit your selections after 13.30 for any race.</li></p>
+                                <p><li>If you do not make selections for a particular day, no points will be awarded.</li></p>
+                                <p><li>If your selection happens to become a non-runner after the 13.30 deadline, you will be giving horse number 1 in the race. </li></p>
+                                <p><li>Leaderboard will be updated after each race.</li></p>
+                                <p><li>In the unlikely event of a tie, the winner will be determined by the number of winners, and then the number of places if needs be.</li></p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFive">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Questions & Queries</button>
+                        </h5>
+                    </div>
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul>
+                                <p>You can contact me on the below email:</p>
+                                <p>cheltenhamnaps@yahoo.com</p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <center><h2>The Funny Stuff</h2></center>
+        <div class="col-xs-12 sm-col-12 col-md-4 col-lg-4">
+            
+            <h4>Don't Be This...</h4>
+                <div>
+                    <img src="static/images/anniepower.jpg" alt="Picture of Annie Power falling"></img>
+                </div>  
+        </div>
+        <div class="col-xs-12 sm-col-12 col-md-4 col-lg-4">
+            <h4>...When You Could Be This</h4>
+                <div>
+                    <img src="static/images/nativeriver.jpg" alt="Picture of Native River winning"></img>
+                </div>  
+        </div>
+        
     </div>
 </div>
-
-
 
 
 {% endblock %}
