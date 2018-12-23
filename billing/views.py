@@ -14,7 +14,7 @@ def make_payment(request):
         if card_form.is_valid():
             token=card_form.cleaned_data['stripe_id']
             charge = stripe.Charge.create(
-                amount=2000,
+                amount=100,
                 currency='EUR',
                 description=request.user.email,
                 card=token,
