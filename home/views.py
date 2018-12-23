@@ -35,8 +35,8 @@ def show_home(request):
 
 # renders the view for selecting horses, editing selections. Also if the user is logged in but not paid, this function will be redirected to payment page
 def add_selection(request, day):
-    if request.user.profile.paid == False:
-        return redirect("make_payment")
+    # if request.user.profile.paid == False:
+    #     return redirect("make_payment")
     
     active_day = get_object_or_404(Day, pk=day)
     if active_day.locked or time_in_range(datetime.time(23, 58, 0), datetime.time(23, 59, 0), datetime.datetime.now().time() ) :
