@@ -11,7 +11,7 @@
             <center><div class="form-group col-sm-12 col-md-6 col-lg-6">
                 {% csrf_token %}
                 <div class="thumbnail">
-                    {% for race in races %}
+                    {% for race in races|dictsort:"time"%}
                     <p>
                         <label for="id_race_{{race.id}}">{{race.time}} - {{race.name}}</label><br>
                         <select id="id_race_{{race.id}}" type="text" name="race_{{race.id}}"/>

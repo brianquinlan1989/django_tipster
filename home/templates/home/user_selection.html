@@ -29,7 +29,7 @@
           </tr>
         </thead>
         <tbody>  
-        {% for selection in selections %} 
+        {% for selection in selections|dictsort:"runner.race.time"%} 
           <tr>
             <td>{{selection.runner.race.day.id}}</td>
             <td>{{selection.runner.race.time}}</td>

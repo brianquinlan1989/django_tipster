@@ -20,7 +20,7 @@
           </tr>
         </thead>
         <tbody>  
-          {% for selection in user.selections.all %} 
+          {% for selection in user.selections.all|dictsort:"runner.race.time"|dictsort:"runner.race.day.id" %} 
           <tr>
             <td>Day {{selection.runner.race.day.id}}</td>
             <td>{{selection.runner.race.time}}</td>

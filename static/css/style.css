@@ -26,11 +26,12 @@ body {
 
 .my-horses-button {
     margin-right: 20px;
+    margin-top: 20px;
 }
 
 hr {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    /*margin-top: 20px;*/
+    /*margin-bottom: 10px;*/
     border: 0;
     border-top: 1px solid black;
 }
