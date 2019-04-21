@@ -21,8 +21,12 @@ def show_home(request):
     start = datetime.time(23, 0, 0)
     end = datetime.time(22, 59, 0)
     race_start_time = time_in_range(start, end, datetime.datetime.now().time())
+        
+    profiles = None
+    if request.user.is_authenticated:
+        profiles = Profile.objects.filter(user = request.user)
+        
     
-    profiles = Profile.objects.filter(user = request.user)
     
     winners = 0
     places = 0
@@ -37,8 +41,8 @@ def show_home(request):
 
 # renders the view for selecting horses, editing selections. Also if the user is logged in but not paid, this function will be redirected to payment page
 def add_selection(request, day):
-    # if request.user.profile.paid == False:
-    #     return redirect("make_payment")
+    if request.user.profile.paid == False:
+        return redirect("make_payment")
     
     active_day = get_object_or_404(Day, pk=day)
     if active_day.locked or time_in_range(datetime.time(23, 58, 0), datetime.time(23, 59, 0), datetime.datetime.now().time() ) :
@@ -64,19 +68,25 @@ def add_selection_confirmed(request, day):
             r = Runner.objects.filter(name = value)[0]
             selection = Selection(runner = r,  user = request.user)
             selection.save()
+
      
     return render(request, "home/add_selection_confirmed.html")
     
 # renders the view of the leaderboard
 def show_leaderboard(request):
+    
+    start = datetime.time(13, 31, 0)
+    end = datetime.time(23, 00, 0)
+    table_deadline = time_in_range(start, end, datetime.datetime.now().time())
+    
     profiles = Profile.objects.all()
     runners = Runner.objects.all()
     races = Race.objects.all()
-    return render(request, "home/leaderboard.html", {'profiles':profiles, 'runners':runners, 'races':races})
+    return render(request, "home/leaderboard.html", {'table_deadline':table_deadline, 'profiles':profiles, 'runners':runners, 'races':races})
     
-# def show_results(request, day):
-#     selections = Selection.objects.filter(runner__race__day = day)
-#     return render(request, "home/leaderboard.html", {'range':range(1,5), 'selections':selections})
+def show_results(request, day):
+    # selections = Selection.objects.filter(runner__race__day = day)
+    return render(request, "home/leaderboard.html", {'range':range(1,5), 'selections':selections})
 
 # renders the view when you click on a user's name from the leaderboard    
 def show_your_selection_leaderboard(request, day, id):
@@ -96,3 +106,5 @@ def show_images(request):
 # Course Info
 def show_course_info(request):
     return render(request, "home/course_info.html")
+    
+

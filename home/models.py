@@ -20,10 +20,12 @@ class Race(models.Model):
         return self.name
 
 class Runner(models.Model):
+    number = models.IntegerField(default=0)
     name = models.CharField(max_length=100, blank=False)
     race = models.ForeignKey(Race, null=False, related_name="runners", on_delete=models.PROTECT)
     position = models.IntegerField(default=0)
     odds = models.DecimalField(max_digits=4, decimal_places=2, null=False, default=0)
+    non_runner = models.BooleanField(default=False)
     
     @property
     def score(self):

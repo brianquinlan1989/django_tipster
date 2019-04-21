@@ -1,0 +1,54 @@
+{% extends 'base.html' %} 
+{% load bootstrap_tags %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 sm-col-12 col-md-12 col-lg-12">
+            <h1>List of Runners</h1>
+            <input type="text" id="nonRunners" onkeyup="nonRunners()" placeholder="Search horse name.." title="Type in a name"></span>
+            <table id="runnerTable" class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Horse</th>
+                        <th>Non Runner</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for runner in runners|dictsort:"name" %}
+                    <tr>
+                        <td>{{runner.name}}</td>
+                        <td><input type="checkbox" name="horse_name" value="runner"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function nonRunners() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("nonRunners");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("runnerTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                }
+                else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+
+
+{% endblock %}

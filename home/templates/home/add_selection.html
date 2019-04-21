@@ -15,12 +15,12 @@
                     <p>
                         <label for="id_race_{{race.id}}">{{race.time}} - {{race.name}}</label><br>
                         <select id="id_race_{{race.id}}" type="text" name="race_{{race.id}}"/>
-                            <option>--Please choose a horse--</option>
-                        {% for runner in race.runners.all %}
+                            
+                        {% for runner in race.runners.all|dictsort:"number" %}
                             {% if runner in selected_runners %}
-                            <option value="{{runner.name}}" selected>{{runner.name}}</option>
+                            <option value="{{runner.name}}" selected >{{runner.number}}. {{runner.name}}</option>
                             {% else %}
-                            <option value="{{runner.name}}">{{runner.name}}</option>
+                            <option value="{{runner.name}}" >{{runner.number}}. {{runner.name}}</option>
                             {% endif %}
                         {% endfor %}
                         </select>

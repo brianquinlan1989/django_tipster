@@ -10,9 +10,11 @@
             <center><p><h4>You are successfully logged in</h4></p></center>
             <hr>
             <center><p><h4>Current Standings</h4></p></center>
-            {% for profile in profiles%}
-            <p>Your Score: {{profile.score}}<span><a href="{% url 'add_selection_confirmed' 4 %}" class="btn btn-primary my-horses-button pull-right">My Horses</a></span></p>
-            {% endfor %}
+            {% if profiles %}
+                {% for profile in profiles%}
+                <p>Your Score: {{profile.score}}<span><a href="{% url 'add_selection_confirmed' 4 %}" class="btn btn-primary my-horses-button pull-right">My Horses</a></span></p>
+                {% endfor %}
+            {% endif %}
             <p>Your Winners: {{winners}}</p>
             <p>Your Places: {{places}}</p>
             <hr>
@@ -50,7 +52,7 @@
                 <h1><center>Cheltenham Racing Festival - 2018</center></h1>
                 <p>
                     <center>
-                    The Cheltenham Racing Fesitval is the pinnacle of jump racing calendar. Every trainer wants to train a cheltenham winner, every owner wants to own a cheltenham winner and every jockey wants to ride a cheltenham winner. Simply the best four days of racing. 
+                    The Cheltenham Racing Fesitval is the pinnacle of the jump racing calendar. Every trainer wants to train a cheltenham winner, every owner wants to own a cheltenham winner and every jockey wants to ride a cheltenham winner. Simply the best four days of racing. 
                     </center>
                 </p>
                 <p>
@@ -90,7 +92,7 @@
                 <div class="thumbnail">
                     <h1>Cheltenham Racing Festival - 2018</h1>
                     <p>
-                        The Cheltenham Racing Fesitval is the pinnacle of jump racing calendar. Every trainer wants to train a cheltenham winner, every owner wants to own a cheltenham winner and every jockey wants to ride a cheltenham winner. Simply the best four days of racing. 
+                        The Cheltenham Racing Fesitval is the pinnacle of the jump racing calendar. Every trainer wants to train a cheltenham winner, every owner wants to own a cheltenham winner and every jockey wants to ride a cheltenham winner. Simply the best four days of racing. 
                     </p>
                     <p>
                         For the racing enthuse there is no better time of year and nothing better to do than watch the best horses compete against each other at the home of jump racing. If you're still not hooked, check out the highlights of 2017 below and tell me you didn't get goose bumps.
